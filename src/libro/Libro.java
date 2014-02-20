@@ -25,6 +25,32 @@ public class Libro {
 		DBUtil<Libro> dbUtil = new DBUtil<>();
 		dbUtil.modificarLibro(consultaSQL);
 	}
+	
+	public void actualizar() {
+		String consultaSQL = "update libro set titulo='"+this.titulo+"',categoria='"+this.categoria+"' where isbn='"+this.isbn+"'";
+		DBUtil<Libro> dbUtil = new DBUtil<>();
+		dbUtil.modificarLibro(consultaSQL);
+	}
+	
+	public void borrar() {
+		String consultaSQL = "delete from libro where isbn='"+this.isbn+"'";
+		DBUtil<Libro> dbUtil = new DBUtil<>();
+		dbUtil.modificarLibro(consultaSQL);
+	}
+
+	public static Libro buscarPorClave(String isbn) {
+		String consultaSQL = "select isbn,titulo,categoria from libro where isbn='"+isbn+"'";
+		DBUtil<Libro> dbUtil = new DBUtil<>();
+		List<Libro> libros = dbUtil.seleccionarRegistros(consultaSQL, Libro.class);
+		return (libros != null ? libros.get(0) : null);
+	}
+
+	public static List<Libro> buscarPorCategoria(String categoria) {
+		String consultaSQL = "select isbn,titulo,categoria from libro where categoria='"+categoria+"'";
+		DBUtil<Libro> dbUtil = new DBUtil<>();
+		List<Libro> lista = dbUtil.seleccionarRegistros(consultaSQL, Libro.class);
+		return lista;
+	}
 
 	public static List<Libro> buscarTodos() {
 		String consultaSQL = "select isbn,titulo,categoria from libro";

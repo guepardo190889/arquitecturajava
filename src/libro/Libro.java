@@ -23,19 +23,19 @@ public class Libro {
 		String consultaSQL = "insert into libro (isbn,titulo,categoria) values ";
 		consultaSQL += "('" + this.isbn + "','" + this.titulo + "','" + this.categoria + "')";
 		DBUtil<Libro> dbUtil = new DBUtil<>();
-		dbUtil.modificarLibro(consultaSQL);
+		dbUtil.modificarRegistro(consultaSQL);
 	}
 	
 	public void actualizar() {
 		String consultaSQL = "update libro set titulo='"+this.titulo+"',categoria='"+this.categoria+"' where isbn='"+this.isbn+"'";
 		DBUtil<Libro> dbUtil = new DBUtil<>();
-		dbUtil.modificarLibro(consultaSQL);
+		dbUtil.modificarRegistro(consultaSQL);
 	}
 	
 	public void borrar() {
 		String consultaSQL = "delete from libro where isbn='"+this.isbn+"'";
 		DBUtil<Libro> dbUtil = new DBUtil<>();
-		dbUtil.modificarLibro(consultaSQL);
+		dbUtil.modificarRegistro(consultaSQL);
 	}
 
 	public static Libro buscarPorClave(String isbn) {

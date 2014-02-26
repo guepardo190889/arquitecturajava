@@ -16,7 +16,7 @@ public class DBUtil<T> {
 	private static final String USUARIO = "blackdeath";
 	private static final String CLAVE = "aeiou123";
 
-	public int modificarLibro(String consultaSQL) {
+	public int modificarRegistro(String consultaSQL) throws ClassNotFoundException, SQLException {
 		
 		Connection conexion = null;
 		Statement sentencia = null;
